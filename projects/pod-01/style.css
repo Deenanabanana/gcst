@@ -1,0 +1,83 @@
+/* This file belongs to your project. Change anything you like.
+   Nothing you do here can affect any other project. */
+
+:root {
+  --ink: #12161c;
+  --ink-soft: #55606f;
+  --line: #e2e6ec;
+  --bg: #ffffff;
+  --bg-soft: #f6f8fa;
+  --accent: #0d5c4a;   /* change this one colour to make the page yours */
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #e8ecf1;
+    --ink-soft: #97a3b4;
+    --line: #232a33;
+    --bg: #0e1116;
+    --bg-soft: #151a21;
+    --accent: #4fd1ab;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0 auto;
+  max-width: 46rem;
+  padding: 0 1.25rem 4rem;
+  background: var(--bg);
+  color: var(--ink);
+  font: 16px/1.7 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--accent); text-underline-offset: 3px; }
+
+.back {
+  display: inline-block;
+  margin: 2rem 0 2.5rem;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  text-decoration: none;
+}
+.back:hover { color: var(--accent); }
+
+h1 { font-size: clamp(1.8rem, 5vw, 2.5rem); line-height: 1.15; letter-spacing: -0.02em; margin: 0 0 0.75rem; }
+h2 { margin: 2.5rem 0 0.5rem; font-size: 1.25rem; letter-spacing: -0.01em; }
+
+.summary { font-size: 1.15rem; color: var(--ink-soft); margin: 0 0 2rem; }
+
+img { max-width: 100%; height: auto; border-radius: 10px; display: block; margin: 1.5rem 0; }
+
+.team { list-style: none; padding: 0; }
+.team li { padding: 0.3rem 0; border-bottom: 1px solid var(--line); }
+
+.tags { display: flex; flex-wrap: wrap; gap: 0.4rem; padding: 0; list-style: none; }
+.tags li {
+  font-size: 0.8rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  color: var(--ink-soft);
+}
+
+pre {
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 1rem;
+  overflow-x: auto;
+  font-size: 0.85rem;
+}
+
+footer {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--line);
+  color: var(--ink-soft);
+  font-size: 0.875rem;
+}

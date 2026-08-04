@@ -1,0 +1,83 @@
+/* Styles for the front page only. Each project has its own style.css. */
+
+:root {
+  --ink: #12161c;
+  --ink-soft: #55606f;
+  --line: #e2e6ec;
+  --bg: #ffffff;
+  --bg-soft: #f6f8fa;
+  --accent: #0d5c4a;
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #e8ecf1;
+    --ink-soft: #97a3b4;
+    --line: #232a33;
+    --bg: #0e1116;
+    --bg-soft: #151a21;
+    --accent: #4fd1ab;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 16px/1.65 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap { max-width: 62rem; margin: 0 auto; padding: 0 1.25rem; }
+
+.site-head { border-bottom: 1px solid var(--line); }
+.site-head .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 3.5rem;
+  flex-wrap: wrap;
+}
+.brand { font-weight: 650; color: var(--ink); text-decoration: none; letter-spacing: -0.01em; }
+.brand span { color: var(--accent); }
+.nav { display: flex; gap: 1.25rem; font-size: 0.9rem; }
+.nav a { color: var(--ink-soft); text-decoration: none; }
+.nav a:hover { color: var(--accent); }
+
+.hero { padding: 3.5rem 0 2.5rem; max-width: 42rem; }
+.hero h1 { font-size: clamp(1.9rem, 5vw, 2.75rem); line-height: 1.15; letter-spacing: -0.02em; margin: 0 0 0.75rem; }
+.hero p { color: var(--ink-soft); font-size: 1.05rem; margin: 0; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+  gap: 1.25rem;
+}
+
+.card {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+.card:hover { border-color: var(--accent); transform: translateY(-2px); }
+.card img { width: 100%; aspect-ratio: 1200 / 630; object-fit: cover; display: block; background: var(--bg-soft); }
+.card div { padding: 0.9rem 1rem 1.1rem; }
+.card h2 { font-size: 1.05rem; margin: 0 0 0.3rem; letter-spacing: -0.01em; }
+.card p { margin: 0; color: var(--ink-soft); font-size: 0.9rem; }
+
+.site-foot {
+  border-top: 1px solid var(--line);
+  margin-top: 4rem;
+  padding: 2rem 0;
+  color: var(--ink-soft);
+  font-size: 0.875rem;
+}
