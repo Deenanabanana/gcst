@@ -1,83 +1,260 @@
 /* Styles for the front page only. Each project has its own style.css. */
 
 :root {
-  --ink: #12161c;
-  --ink-soft: #55606f;
-  --line: #e2e6ec;
-  --bg: #ffffff;
-  --bg-soft: #f6f8fa;
-  --accent: #0d5c4a;
-  color-scheme: light dark;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --ink: #e8ecf1;
-    --ink-soft: #97a3b4;
-    --line: #232a33;
-    --bg: #0e1116;
-    --bg-soft: #151a21;
-    --accent: #4fd1ab;
-  }
+  --bg: #03080f;
+  --bg-panel: rgba(10, 30, 52, 0.42);
+  --cyan: #35d6ff;
+  --cyan-soft: #8fe6ff;
+  --cyan-dim: rgba(53, 214, 255, 0.28);
+  --cyan-faint: rgba(53, 214, 255, 0.10);
+  --ink: #dff4ff;
+  --ink-soft: #7ea8c4;
+  --glow: 0 0 18px rgba(53, 214, 255, 0.35);
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  color-scheme: dark;
 }
 
 * { box-sizing: border-box; }
 
 body {
   margin: 0;
-  background: var(--bg);
   color: var(--ink);
   font: 16px/1.65 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
+  background:
+    radial-gradient(120% 80% at 50% -10%, rgba(53, 214, 255, 0.20), transparent 60%),
+    radial-gradient(90% 60% at 10% 100%, rgba(24, 130, 190, 0.22), transparent 65%),
+    var(--bg);
+  background-attachment: fixed;
+  position: relative;
+  overflow-x: hidden;
 }
 
-.wrap { max-width: 62rem; margin: 0 auto; padding: 0 1.25rem; }
+/* Perspective grid floor, like the projected table in the reference. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    repeating-linear-gradient(to right, var(--cyan-faint) 0 1px, transparent 1px 88px),
+    repeating-linear-gradient(to bottom, var(--cyan-faint) 0 1px, transparent 1px 88px);
+  mask-image: radial-gradient(120% 90% at 50% 0%, #000 10%, transparent 75%);
+  -webkit-mask-image: radial-gradient(120% 90% at 50% 0%, #000 10%, transparent 75%);
+}
 
-.site-head { border-bottom: 1px solid var(--line); }
+/* Faint scanlines over everything. */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(53, 214, 255, 0.045) 0 1px,
+    transparent 1px 4px
+  );
+}
+
+.wrap { max-width: 64rem; margin: 0 auto; padding: 0 1.25rem; position: relative; z-index: 1; }
+
+/* ---------- header ---------- */
+
+.site-head {
+  position: sticky;
+  top: 0;
+  z-index: 8;
+  background: linear-gradient(to bottom, rgba(3, 8, 15, 0.92), rgba(3, 8, 15, 0.55));
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--cyan-dim);
+  box-shadow: 0 1px 0 rgba(53, 214, 255, 0.15), 0 8px 30px -12px rgba(53, 214, 255, 0.45);
+}
 .site-head .wrap {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  min-height: 3.5rem;
+  min-height: 3.75rem;
   flex-wrap: wrap;
 }
-.brand { font-weight: 650; color: var(--ink); text-decoration: none; letter-spacing: -0.01em; }
-.brand span { color: var(--accent); }
-.nav { display: flex; gap: 1.25rem; font-size: 0.9rem; }
-.nav a { color: var(--ink-soft); text-decoration: none; }
-.nav a:hover { color: var(--accent); }
+.brand {
+  font-family: var(--mono);
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+  text-shadow: var(--glow);
+}
+.brand span { color: var(--cyan); }
 
-.hero { padding: 3.5rem 0 2.5rem; max-width: 42rem; }
-.hero h1 { font-size: clamp(1.9rem, 5vw, 2.75rem); line-height: 1.15; letter-spacing: -0.02em; margin: 0 0 0.75rem; }
-.hero p { color: var(--ink-soft); font-size: 1.05rem; margin: 0; }
+.nav { display: flex; gap: 1.5rem; }
+.nav a {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  text-decoration: none;
+  padding-bottom: 2px;
+  border-bottom: 1px solid transparent;
+  transition: color 0.18s ease, border-color 0.18s ease, text-shadow 0.18s ease;
+}
+.nav a:hover {
+  color: var(--cyan);
+  border-bottom-color: var(--cyan);
+  text-shadow: var(--glow);
+}
+
+/* ---------- hero ---------- */
+
+.hero {
+  position: relative;
+  margin: 3rem 0 3.25rem;
+  padding: 2.5rem clamp(1.25rem, 4vw, 2.75rem);
+  max-width: 46rem;
+  background: var(--bg-panel);
+  border: 1px solid var(--cyan-dim);
+  box-shadow: inset 0 0 60px rgba(53, 214, 255, 0.07), 0 0 40px -18px rgba(53, 214, 255, 0.55);
+}
+/* Corner brackets: two pseudo-elements, two corners each. */
+.hero::before,
+.hero::after {
+  content: "";
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border: 2px solid var(--cyan);
+  filter: drop-shadow(0 0 6px rgba(53, 214, 255, 0.8));
+}
+.hero::before { top: -1px; left: -1px; border-right: 0; border-bottom: 0; }
+.hero::after { bottom: -1px; right: -1px; border-left: 0; border-top: 0; }
+
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin: 0 0 1rem;
+  text-shadow: var(--glow);
+}
+
+.hero h1 {
+  font-size: clamp(1.9rem, 5vw, 2.8rem);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.85rem;
+  color: #fff;
+  text-shadow: 0 0 24px rgba(53, 214, 255, 0.55);
+}
+.hero p {
+  color: var(--cyan-soft);
+  font-size: 1.05rem;
+  margin: 0;
+}
+
+/* ---------- project grid ---------- */
 
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
-  gap: 1.25rem;
+  gap: 1.5rem;
+  padding-bottom: 1rem;
 }
 
 .card {
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  overflow: hidden;
-  text-decoration: none;
-  color: inherit;
+  position: relative;
   display: flex;
   flex-direction: column;
-  transition: border-color 0.15s ease, transform 0.15s ease;
+  text-decoration: none;
+  color: inherit;
+  background: var(--bg-panel);
+  border: 1px solid var(--cyan-dim);
+  box-shadow: inset 0 0 40px rgba(53, 214, 255, 0.05);
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
-.card:hover { border-color: var(--accent); transform: translateY(-2px); }
-.card img { width: 100%; aspect-ratio: 1200 / 630; object-fit: cover; display: block; background: var(--bg-soft); }
-.card div { padding: 0.9rem 1rem 1.1rem; }
-.card h2 { font-size: 1.05rem; margin: 0 0 0.3rem; letter-spacing: -0.01em; }
+.card::before,
+.card::after {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--cyan);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+  z-index: 2;
+}
+.card::before { top: -1px; left: -1px; border-right: 0; border-bottom: 0; }
+.card::after { bottom: -1px; right: -1px; border-left: 0; border-top: 0; }
+
+.card:hover {
+  border-color: var(--cyan);
+  transform: translateY(-4px);
+  box-shadow:
+    inset 0 0 40px rgba(53, 214, 255, 0.10),
+    0 0 34px -8px rgba(53, 214, 255, 0.65);
+}
+.card:hover::before,
+.card:hover::after { opacity: 1; }
+
+/* Duotone the cover art to cyan so mixed uploads still read as one system.
+   Hover eases it back toward the real image. */
+.card img {
+  width: 100%;
+  aspect-ratio: 1200 / 630;
+  object-fit: cover;
+  display: block;
+  background: #061422;
+  border-bottom: 1px solid var(--cyan-dim);
+  filter: grayscale(1) sepia(1) hue-rotate(158deg) saturate(4.5) brightness(1.75) contrast(0.95);
+  opacity: 0.9;
+  transition: filter 0.25s ease, opacity 0.25s ease;
+}
+.card:hover img {
+  filter: grayscale(1) sepia(1) hue-rotate(158deg) saturate(5.5) brightness(2) contrast(0.95);
+  opacity: 1;
+}
+
+.card div { padding: 1rem 1.1rem 1.25rem; }
+.card h2 {
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin: 0 0 0.45rem;
+  text-shadow: 0 0 12px rgba(53, 214, 255, 0.5);
+}
 .card p { margin: 0; color: var(--ink-soft); font-size: 0.9rem; }
 
+/* ---------- footer ---------- */
+
 .site-foot {
-  border-top: 1px solid var(--line);
-  margin-top: 4rem;
-  padding: 2rem 0;
+  border-top: 1px solid var(--cyan-dim);
+  margin-top: 4.5rem;
+  padding: 2.25rem 0 3rem;
   color: var(--ink-soft);
-  font-size: 0.875rem;
+  font-size: 0.85rem;
+  background: linear-gradient(to bottom, transparent, rgba(53, 214, 255, 0.06));
+}
+
+/* ---------- accessibility ---------- */
+
+a:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
+
+@media (prefers-contrast: more) {
+  :root { --ink-soft: #b9d8e8; --cyan-dim: rgba(53, 214, 255, 0.6); }
+  body::after { display: none; }
 }
