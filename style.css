@@ -2,7 +2,7 @@
 
 :root {
   --bg: #03080f;
-  --bg-panel: rgba(10, 30, 52, 0.42);
+  --bg-panel: rgba(5, 20, 38, 0.72);
   --cyan: #35d6ff;
   --cyan-soft: #8fe6ff;
   --cyan-dim: rgba(53, 214, 255, 0.28);
@@ -30,7 +30,7 @@ body {
   overflow-x: hidden;
 }
 
-/* Perspective grid floor, like the projected table in the reference. */
+/* Flat grid behind the upper half, fading out before it meets the floor. */
 body::before {
   content: "";
   position: fixed;
@@ -40,8 +40,8 @@ body::before {
   background-image:
     repeating-linear-gradient(to right, var(--cyan-faint) 0 1px, transparent 1px 88px),
     repeating-linear-gradient(to bottom, var(--cyan-faint) 0 1px, transparent 1px 88px);
-  mask-image: radial-gradient(120% 90% at 50% 0%, #000 10%, transparent 75%);
-  -webkit-mask-image: radial-gradient(120% 90% at 50% 0%, #000 10%, transparent 75%);
+  mask-image: radial-gradient(120% 80% at 50% 0%, #000 5%, transparent 62%);
+  -webkit-mask-image: radial-gradient(120% 80% at 50% 0%, #000 5%, transparent 62%);
 }
 
 /* Faint scanlines over everything. */
@@ -59,6 +59,127 @@ body::after {
 }
 
 .wrap { max-width: 64rem; margin: 0 auto; padding: 0 1.25rem; position: relative; z-index: 1; }
+
+/* ---------- decorative HUD background ---------- */
+
+.bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  contain: layout paint;
+}
+
+/* Soft cyan bloom behind the whole scene. */
+.bg-glow {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(45% 35% at 18% 26%, rgba(53, 214, 255, 0.16), transparent 70%),
+    radial-gradient(45% 35% at 82% 22%, rgba(53, 214, 255, 0.14), transparent 70%),
+    radial-gradient(70% 45% at 50% 108%, rgba(53, 214, 255, 0.30), transparent 70%);
+}
+
+/* Floating dashboard panels, one each side of the content column. */
+.hud {
+  position: absolute;
+  top: 6vh;
+  width: clamp(180px, 19vw, 320px);
+  height: auto;
+  color: var(--cyan);
+  opacity: 0.5;
+  filter: drop-shadow(0 0 6px rgba(53, 214, 255, 0.55));
+  animation: hudFloat 14s ease-in-out infinite;
+}
+.hud-l { left: max(1.5rem, calc(50% - 43rem)); transform: perspective(900px) rotateY(7deg); }
+.hud-r { right: max(1.5rem, calc(50% - 43rem)); transform: perspective(900px) rotateY(-7deg); animation-delay: -7s; }
+
+@keyframes hudFloat {
+  0%, 100% { translate: 0 0; }
+  50%      { translate: 0 -14px; }
+}
+
+.hud .spin {
+  transform-box: view-box;
+  transform-origin: center;
+  animation: spin 26s linear infinite;
+}
+.hud-l .spin { transform-origin: 76px 108px; }
+.hud-r .spin { transform-origin: 265px 256px; }
+@keyframes spin { to { rotate: 360deg; } }
+
+.hud .bars rect {
+  transform-box: fill-box;
+  transform-origin: bottom;
+  animation: barPulse 5s ease-in-out infinite;
+}
+.hud .bars rect:nth-child(3n)   { animation-delay: -1.6s; }
+.hud .bars rect:nth-child(3n+1) { animation-delay: -3.2s; }
+@keyframes barPulse {
+  0%, 100% { scale: 1 1; }
+  50%      { scale: 1 0.62; }
+}
+
+.hud .trace {
+  stroke-dasharray: 700;
+  stroke-dashoffset: 700;
+  animation: draw 11s ease-in-out infinite;
+}
+@keyframes draw {
+  0%       { stroke-dashoffset: 700; }
+  55%, 92% { stroke-dashoffset: 0; }
+  100%     { stroke-dashoffset: 700; }
+}
+
+.hud .rows rect { animation: rowBlink 7s steps(1, end) infinite; }
+.hud .rows rect:nth-child(4n)   { animation-delay: -2s; }
+.hud .rows rect:nth-child(4n+2) { animation-delay: -4.5s; }
+@keyframes rowBlink {
+  0%, 88%   { opacity: inherit; }
+  90%, 94%  { opacity: 0.9; }
+  96%, 100% { opacity: inherit; }
+}
+
+/* The glowing projected table across the bottom. */
+.bg-floor {
+  position: absolute;
+  left: -50%;
+  right: -50%;
+  bottom: 0;
+  height: 58%;
+  background-image:
+    repeating-linear-gradient(to right, rgba(53, 214, 255, 0.6) 0 1px, transparent 1px 56px),
+    repeating-linear-gradient(to bottom, rgba(53, 214, 255, 0.6) 0 1px, transparent 1px 56px);
+  transform: perspective(560px) rotateX(71deg);
+  transform-origin: bottom center;
+  mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.5) 30%, #000 70%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.5) 30%, #000 70%);
+  animation: floorRun 7s linear infinite;
+}
+@keyframes floorRun {
+  to { background-position: 0 56px, 0 56px; }
+}
+
+/* Slow sweep, like a refresh pass over the display. */
+.bg-scan {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 220px;
+  background: linear-gradient(to bottom, transparent, rgba(53, 214, 255, 0.09), transparent);
+  animation: sweep 10s linear infinite;
+}
+@keyframes sweep {
+  0%   { transform: translateY(-220px); }
+  100% { transform: translateY(100vh); }
+}
+
+/* Panels crowd the text on narrow screens, so drop them and keep the floor. */
+@media (max-width: 1180px) {
+  .hud { display: none; }
+}
 
 /* ---------- header ---------- */
 
@@ -117,6 +238,7 @@ body::after {
   padding: 2.5rem clamp(1.25rem, 4vw, 2.75rem);
   max-width: 46rem;
   background: var(--bg-panel);
+  backdrop-filter: blur(6px);
   border: 1px solid var(--cyan-dim);
   box-shadow: inset 0 0 60px rgba(53, 214, 255, 0.07), 0 0 40px -18px rgba(53, 214, 255, 0.55);
 }
@@ -173,6 +295,7 @@ body::after {
   text-decoration: none;
   color: inherit;
   background: var(--bg-panel);
+  backdrop-filter: blur(6px);
   border: 1px solid var(--cyan-dim);
   box-shadow: inset 0 0 40px rgba(53, 214, 255, 0.05);
   transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
@@ -235,6 +358,8 @@ body::after {
 /* ---------- footer ---------- */
 
 .site-foot {
+  position: relative;
+  z-index: 1;
   border-top: 1px solid var(--cyan-dim);
   margin-top: 4.5rem;
   padding: 2.25rem 0 3rem;
@@ -251,10 +376,18 @@ a:focus-visible {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  * { transition: none !important; }
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  .hud .trace { stroke-dashoffset: 0; }
 }
 
 @media (prefers-contrast: more) {
   :root { --ink-soft: #b9d8e8; --cyan-dim: rgba(53, 214, 255, 0.6); }
-  body::after { display: none; }
+  body::before,
+  body::after,
+  .bg-scan,
+  .hud { display: none; }
+  .bg-floor { opacity: 0.35; }
 }

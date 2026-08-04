@@ -10,6 +10,131 @@
 </head>
 <body>
 
+<!-- Decorative background only. Nothing here is content, so it is hidden from
+     screen readers. Safe to delete this whole block if you want a plain page. -->
+<div class="bg" aria-hidden="true">
+  <div class="bg-glow"></div>
+
+  <svg class="hud hud-l" viewBox="0 0 300 430" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="1" y="1" width="298" height="428" stroke="currentColor" opacity=".5"/>
+    <path d="M1 30h298" stroke="currentColor" opacity=".35"/>
+    <rect x="14" y="12" width="64" height="7" fill="currentColor" opacity=".75"/>
+    <rect x="88" y="12" width="28" height="7" fill="currentColor" opacity=".3"/>
+    <rect x="124" y="12" width="20" height="7" fill="currentColor" opacity=".3"/>
+
+    <circle cx="76" cy="108" r="40" stroke="currentColor" stroke-width="12" opacity=".16"/>
+    <circle cx="76" cy="108" r="40" stroke="currentColor" stroke-width="12" opacity=".8"
+            stroke-dasharray="168 251" transform="rotate(-90 76 108)"/>
+    <circle class="spin" cx="76" cy="108" r="54" stroke="currentColor"
+            stroke-dasharray="3 7" opacity=".5"/>
+    <circle cx="76" cy="108" r="21" stroke="currentColor" opacity=".35"/>
+
+    <g class="bars">
+      <rect x="150" y="116" width="10" height="34" fill="currentColor" opacity=".65"/>
+      <rect x="166" y="128" width="10" height="22" fill="currentColor" opacity=".65"/>
+      <rect x="182" y="104" width="10" height="46" fill="currentColor" opacity=".65"/>
+      <rect x="198" y="120" width="10" height="30" fill="currentColor" opacity=".65"/>
+      <rect x="214" y="98"  width="10" height="52" fill="currentColor" opacity=".65"/>
+      <rect x="230" y="110" width="10" height="40" fill="currentColor" opacity=".65"/>
+      <rect x="246" y="92"  width="10" height="58" fill="currentColor" opacity=".65"/>
+      <rect x="262" y="124" width="10" height="26" fill="currentColor" opacity=".65"/>
+    </g>
+    <path d="M150 150h122" stroke="currentColor" opacity=".45"/>
+
+    <rect x="150" y="164" width="60" height="4" fill="currentColor" opacity=".45"/>
+    <rect x="150" y="174" width="88" height="4" fill="currentColor" opacity=".3"/>
+    <path d="M14 194h272" stroke="currentColor" opacity=".3"/>
+
+    <g class="bars">
+      <rect x="14"  y="270" width="11" height="30"  fill="currentColor" opacity=".6"/>
+      <rect x="31"  y="256" width="11" height="44"  fill="currentColor" opacity=".6"/>
+      <rect x="48"  y="262" width="11" height="38"  fill="currentColor" opacity=".6"/>
+      <rect x="65"  y="244" width="11" height="56"  fill="currentColor" opacity=".6"/>
+      <rect x="82"  y="252" width="11" height="48"  fill="currentColor" opacity=".6"/>
+      <rect x="99"  y="234" width="11" height="66"  fill="currentColor" opacity=".6"/>
+      <rect x="116" y="242" width="11" height="58"  fill="currentColor" opacity=".6"/>
+      <rect x="133" y="226" width="11" height="74"  fill="currentColor" opacity=".6"/>
+      <rect x="150" y="236" width="11" height="64"  fill="currentColor" opacity=".6"/>
+      <rect x="167" y="218" width="11" height="82"  fill="currentColor" opacity=".6"/>
+      <rect x="184" y="228" width="11" height="72"  fill="currentColor" opacity=".6"/>
+      <rect x="201" y="210" width="11" height="90"  fill="currentColor" opacity=".6"/>
+      <rect x="218" y="220" width="11" height="80"  fill="currentColor" opacity=".6"/>
+      <rect x="235" y="202" width="11" height="98"  fill="currentColor" opacity=".6"/>
+      <rect x="252" y="212" width="11" height="88"  fill="currentColor" opacity=".6"/>
+      <rect x="269" y="196" width="11" height="104" fill="currentColor" opacity=".6"/>
+    </g>
+    <path class="trace" d="M19 268 36 254 53 260 70 242 87 250 104 232 121 240 138 224
+                           155 234 172 216 189 226 206 208 223 218 240 200 257 210 274 194"
+          stroke="currentColor" stroke-width="1.5" opacity=".9"/>
+    <path d="M14 300h272" stroke="currentColor" opacity=".5"/>
+
+    <rect x="14" y="326" width="10" height="10" stroke="currentColor" opacity=".5"/>
+    <rect x="32" y="329" width="74" height="4" fill="currentColor" opacity=".35"/>
+    <rect x="14" y="348" width="10" height="10" stroke="currentColor" opacity=".5"/>
+    <rect x="32" y="351" width="52" height="4" fill="currentColor" opacity=".35"/>
+    <rect x="14" y="370" width="10" height="10" stroke="currentColor" opacity=".5"/>
+    <rect x="32" y="373" width="96" height="4" fill="currentColor" opacity=".35"/>
+    <rect x="14" y="392" width="10" height="10" stroke="currentColor" opacity=".5"/>
+    <rect x="32" y="395" width="64" height="4" fill="currentColor" opacity=".35"/>
+  </svg>
+
+  <svg class="hud hud-r" viewBox="0 0 300 430" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="currentColor" stop-opacity=".35"/>
+        <stop offset="1" stop-color="currentColor" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+
+    <rect x="1" y="1" width="298" height="428" stroke="currentColor" opacity=".5"/>
+    <path d="M1 30h298" stroke="currentColor" opacity=".35"/>
+    <rect x="14" y="12" width="48" height="7" fill="currentColor" opacity=".75"/>
+    <rect x="72" y="12" width="34" height="7" fill="currentColor" opacity=".3"/>
+
+    <path d="M20 76h260M20 106h260M20 136h260M20 166h260" stroke="currentColor" opacity=".16"/>
+    <path d="M20 176 46 158 72 168 98 132 124 144 150 112 176 124 202 88 228 100 254 70 280 56
+             L280 196 L20 196 Z" fill="url(#fade)"/>
+    <path class="trace" d="M20 176 46 158 72 168 98 132 124 144 150 112 176 124 202 88
+                           228 100 254 70 280 56"
+          stroke="currentColor" stroke-width="1.5" opacity=".95"/>
+    <path d="M20 196h260" stroke="currentColor" opacity=".5"/>
+
+    <g opacity=".8">
+      <circle cx="55" cy="256" r="22" stroke="currentColor" stroke-width="6" opacity=".18"/>
+      <circle cx="55" cy="256" r="22" stroke="currentColor" stroke-width="6"
+              stroke-dasharray="96 138" transform="rotate(-90 55 256)"/>
+      <circle cx="125" cy="256" r="22" stroke="currentColor" stroke-width="6" opacity=".18"/>
+      <circle cx="125" cy="256" r="22" stroke="currentColor" stroke-width="6"
+              stroke-dasharray="62 138" transform="rotate(-90 125 256)"/>
+      <circle cx="195" cy="256" r="22" stroke="currentColor" stroke-width="6" opacity=".18"/>
+      <circle cx="195" cy="256" r="22" stroke="currentColor" stroke-width="6"
+              stroke-dasharray="112 138" transform="rotate(-90 195 256)"/>
+      <circle cx="265" cy="256" r="22" stroke="currentColor" stroke-width="6" opacity=".18"/>
+      <circle cx="265" cy="256" r="22" stroke="currentColor" stroke-width="6"
+              stroke-dasharray="44 138" transform="rotate(-90 265 256)"/>
+    </g>
+    <circle class="spin" cx="265" cy="256" r="32" stroke="currentColor"
+            stroke-dasharray="2 6" opacity=".45"/>
+
+    <path d="M14 300h272" stroke="currentColor" opacity=".3"/>
+    <g class="rows">
+      <rect x="14" y="316" width="140" height="5" fill="currentColor" opacity=".4"/>
+      <rect x="164" y="316" width="46" height="5" fill="currentColor" opacity=".22"/>
+      <rect x="14" y="336" width="92"  height="5" fill="currentColor" opacity=".4"/>
+      <rect x="164" y="336" width="72" height="5" fill="currentColor" opacity=".22"/>
+      <rect x="14" y="356" width="118" height="5" fill="currentColor" opacity=".4"/>
+      <rect x="164" y="356" width="34" height="5" fill="currentColor" opacity=".22"/>
+      <rect x="14" y="376" width="68"  height="5" fill="currentColor" opacity=".4"/>
+      <rect x="164" y="376" width="88" height="5" fill="currentColor" opacity=".22"/>
+      <rect x="14" y="396" width="104" height="5" fill="currentColor" opacity=".4"/>
+      <rect x="164" y="396" width="52" height="5" fill="currentColor" opacity=".22"/>
+    </g>
+  </svg>
+
+  <div class="bg-floor"></div>
+  <div class="bg-scan"></div>
+</div>
+
 <header class="site-head">
   <div class="wrap">
     <a class="brand" href="./">Global<span>AI</span></a>
