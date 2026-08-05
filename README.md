@@ -3,7 +3,7 @@
 Student built AI projects from the B.Tech in Artificial Intelligence programme at
 [GCST](https://gcst.edu.np/).
 
-**The website:(https://gcst-ai.github.io/gcst/)**
+**The website: [gcst-ai.github.io/gcst/](https://gcst-ai.github.io/gcst/)**
 
 
 ---
