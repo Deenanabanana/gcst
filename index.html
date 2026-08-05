@@ -3,9 +3,28 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- ===================================================================
+       THE FRONT PAGE
+
+       Careful: this file is shared. Every project appears on it, so a
+       mistake here shows on everybody's front page. Your own project page
+       lives in projects/pod-NN/index.html, and that one is yours alone.
+
+       On this page you only ever touch YOUR OWN card, the block that
+       already points at your folder. Find it by looking for your folder
+       name, for example href="projects/pod-07/". Full instructions are
+       further down, just above the list of cards.
+
+       Do not add, delete, or reorder anyone else's card. If a card needs
+       to be added or removed, that is a maintainer's job.
+       =================================================================== -->
+
+  <!-- KEEP: the name on the browser tab, and the summary search engines show. -->
   <title>GlobalAI</title>
   <meta name="description" content="Student built AI projects from the B.Tech in Artificial Intelligence programme at GCST, Kathmandu.">
   <meta name="theme-color" content="#03080f">
+
+  <!-- KEEP: loads the colours, spacing, and the background graphics. -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -135,6 +154,7 @@
   <div class="bg-scan"></div>
 </div>
 
+<!-- KEEP: the bar across the top. Maintainers only. -->
 <header class="site-head">
   <div class="wrap">
     <a class="brand" href="./">Global<span>AI</span></a>
@@ -146,13 +166,49 @@
 </header>
 
 <main class="wrap">
+  <!-- KEEP: the headline panel introducing the whole lab. Maintainers only,
+       this text is not about any one project. -->
   <section class="hero">
     <p class="eyebrow">GCST &middot; B.Tech Artificial Intelligence</p>
     <h1>Student built AI projects, open and running.</h1>
     <p>Every project from the B.Tech in Artificial Intelligence programme at GCST lives here.</p>
   </section>
 
-  <!-- One block per project. To add Pod 18, copy any block below and change the two numbers. -->
+  <!-- ===================================================================
+       THE PROJECT CARDS
+
+       One block per project. Here is what a block is made of:
+
+           <a class="card" href="projects/pod-07/">          <- KEEP, this is the link
+             <img src="projects/pod-07/images/cover.svg"     <- picture, see below
+                  alt="" loading="lazy">
+             <div>
+               <h2>Pod 7</h2>                                <- EDIT, your project name
+               <p>One sentence about this project.</p>       <- EDIT, one short sentence
+             </div>
+           </a>
+
+       STUDENTS: find the block with your folder name in it, then change
+       two things and nothing else.
+
+         1. The words inside <h2> and </h2>. Use your real project name,
+            the same one you put at the top of your own page.
+         2. The words inside <p> and </p>. One short sentence. It has to
+            fit on a card, so keep it shorter than the summary on your
+            own page.
+
+       Leave the href and the img line alone. The card picture is pulled
+       straight out of your own images folder, so when you upload a new
+       cover picture there it appears here on its own. You do not edit
+       this file to change your picture.
+
+       Do not touch any block other than your own.
+
+       MAINTAINERS: to add Pod 18, copy any whole block from <a> to </a>,
+       paste it at the end of the list, and change all three numbers, the
+       two in the paths and the one in the heading. Then create the
+       matching projects/pod-18/ folder.
+       =================================================================== -->
   <div class="grid">
 
     <a class="card" href="projects/pod-01/">
@@ -293,6 +349,7 @@
   </div>
 </main>
 
+<!-- KEEP: the footer. Maintainers only. -->
 <footer class="site-foot">
   <div class="wrap">
     Built by students of the B.Tech in Artificial Intelligence programme at Global College of
