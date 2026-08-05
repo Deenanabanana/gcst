@@ -80,9 +80,9 @@ them. They are there so other people can read what you did.
 
 ## Rules
 
-1. **Never upload passwords or API keys.**
+1. **Pelase do not upload passwords or API keys.**
 2. **Nothing over 5 MB.** Big datasets and model files do not belong here. Link to them instead.
-3. **Plain file names.** Lowercase, no spaces. `field-photo.jpg`, not `Field Photo (1).JPG`.
+3. **Please Plain file names.** Lowercase, no spaces. `field-photo.jpg`, not `Field Photo (1).JPG`.
 
 ## Something went wrong
 
