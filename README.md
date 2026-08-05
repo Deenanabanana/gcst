@@ -3,11 +3,8 @@
 Student built AI projects from the B.Tech in Artificial Intelligence programme at
 [GCST](https://gcst.edu.np/).
 
-**The website: https://globalai.github.io/**
+**The website:[https://gcst-ai.github.io/gcst/]**
 
-There is no build step. Every file in this repository is served exactly as it is written.
-`projects/pod-07/index.html` is the page at `https://globalai.github.io/projects/pod-07/`.
-Change the file, and two minutes later the page has changed.
 
 ---
 
@@ -17,11 +14,12 @@ You do not need to install anything. Everything happens in your browser.
 
 ## Your page
 
-Your project is **Pod 7**, and your web address is:
+Your project is **Pod X**, and your web address is:
 
 ```
-https://globalai.github.io/projects/pod-07/
+https://gcst-ai.github.io/gcst/projects/pod-X/
 ```
+Replace X with your project number. for eg: pod-01,pod-02...
 
 That address never changes. Print it on a poster, put it on your CV.
 
@@ -82,20 +80,12 @@ them. They are there so other people can read what you did.
 
 ## Rules
 
-1. **Only touch your own folder.** Everything outside `projects/pod-07/` belongs to someone else.
-2. **Never upload passwords or API keys.**
-3. **Nothing over 5 MB.** Big datasets and model files do not belong here. Link to them instead.
-4. **Plain file names.** Lowercase, no spaces. `field-photo.jpg`, not `Field Photo (1).JPG`.
-5. **Ask before deleting anything you did not create.**
+1. **Never upload passwords or API keys.**
+2. **Nothing over 5 MB.** Big datasets and model files do not belong here. Link to them instead.
+3. **Plain file names.** Lowercase, no spaces. `field-photo.jpg`, not `Field Photo (1).JPG`.
 
 ## Something went wrong
 
 See [HELP.md](HELP.md).
 
-Worth knowing: **you cannot break the website.** Every project is a separate folder of plain
-files. A mistake in your page shows up on your page and nowhere else. Every version of every file
-is saved forever and can be put back.
 
-## For maintainers
-
-See [FOR-MAINTAINERS.md](FOR-MAINTAINERS.md).
